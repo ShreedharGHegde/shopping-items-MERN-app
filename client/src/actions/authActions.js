@@ -12,9 +12,7 @@ import {
   REGISTER_FAIL
 } from './types';
 
-// Check token & load user
 export const loadUser = () => (dispatch, getState) => {
-  // User loading
   dispatch({ type: USER_LOADING });
 
   axios
@@ -33,16 +31,13 @@ export const loadUser = () => (dispatch, getState) => {
     });
 };
 
-// Register User
 export const register = ({ name, email, password }) => dispatch => {
-  // Headers
   const config = {
     headers: {
       'Content-Type': 'application/json'
     }
   };
 
-  // Request body
   const body = JSON.stringify({ name, email, password });
 
   axios
@@ -63,16 +58,13 @@ export const register = ({ name, email, password }) => dispatch => {
     });
 };
 
-// Login User
 export const login = ({ email, password }) => dispatch => {
-  // Headers
   const config = {
     headers: {
       'Content-Type': 'application/json'
     }
   };
 
-  // Request body
   const body = JSON.stringify({ email, password });
 
   axios
@@ -93,26 +85,21 @@ export const login = ({ email, password }) => dispatch => {
     });
 };
 
-// Logout User
 export const logout = () => {
   return {
     type: LOGOUT_SUCCESS
   };
 };
 
-// Setup config/headers and token
 export const tokenConfig = getState => {
-  // Get token from localstorage
   const token = getState().auth.token;
 
-  // Headers
   const config = {
     headers: {
       'Content-type': 'application/json'
     }
   };
 
-  // If token, add to headers
   if (token) {
     config.headers['x-auth-token'] = token;
   }
