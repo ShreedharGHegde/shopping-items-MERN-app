@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb://shreedhar:shree1996@ds231387.mlab.com:31387/shopping-list",
+  "jwtSecret": "sl_myJwtSecret"
+}
